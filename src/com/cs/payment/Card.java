@@ -1,9 +1,10 @@
-package com.cs;
+package com.cs.payment;
 
-import java.sql.SQLOutput;
+import com.cs.interfaces.IPay;
+
 import java.util.*;
 
-public abstract class Card {
+public abstract class Card implements IPay {
 
     // attributes
     protected int number;
@@ -83,7 +84,7 @@ public abstract class Card {
     public abstract void slogan();
 
     public void getStatus() {
-        System.out.println("Name: " + this.name + " | Balance: " + this.balance + " | #: " + this.number+ " | "+this.type);
+        System.out.println("Name: " + this.name + " | Balance: " + this.balance + " | #: " + this.number + " | " + this.type);
     }
 
 

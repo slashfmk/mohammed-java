@@ -12,8 +12,6 @@ public class Wallet {
         Random random = new Random();
 
         this.cardNumber = cardNumber;
-
-
     }
 
 }

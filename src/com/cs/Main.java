@@ -1,34 +1,39 @@
 package com.cs;
 
+import com.cs.interfaces.IPay;
+import com.cs.payment.BankCheck;
+import com.cs.payment.Card;
+import com.cs.payment.Master;
+import com.cs.payment.Visa;
+
 public class Main {
 
     public static void main(String[] args) {
 	// write your code here
 
-        int n = 4;
-
         Visa mohammed = new Visa("mohammed mohammed");
+
+        BankCheck check = new BankCheck();
 
         Master jarvis = new Master("Jarvis");
 
-        getInfo(mohammed);
-        getInfo(jarvis);
+        mohammed.deposit(1200);
+        jarvis.deposit(600);
 
-      //  casher.paybill(mohammed);
 
-       // Card yan = new Card("yannick", 555, "Master");
+        charge(jarvis, 230);
+        charge(mohammed, 250);
+        charge(check, 460);
 
-       // mohammed.getStatus();
-       // mohammed.companyStatus();
+        mohammed.getStatus();
+        jarvis.getStatus();
+        check.getCheckStatus();
 
-//        mohammed.deposit(500.23);
-//        mohammed.getStatus();
-//        mohammed.changePassword();
-//        mohammed.spend(200);
-//        mohammed.getStatus();
 
-      //  System.out.println(mohammed.type);
+    }
 
+    public static void charge(IPay c, double amount){
+        c.spend(amount);
     }
 
     public static void getInfo(Card c){

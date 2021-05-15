@@ -1,4 +1,6 @@
-package com.cs;
+package com.cs.payment;
+
+import com.cs.payment.Card;
 
 public class Visa extends Card {
 
