@@ -1,7 +1,7 @@
 package com.cs.interfaces;
 
 public interface IPay {
-    public String xl = "sharya";
-
-    public void spend(double amount);
+    public boolean spend(double amount);
+    public int getNumber();
+    public String getType();
 }

@@ -1,10 +1,9 @@
 package com.cs;
 
 import com.cs.interfaces.IPay;
-import com.cs.payment.BankCheck;
-import com.cs.payment.Card;
-import com.cs.payment.Master;
-import com.cs.payment.Visa;
+import com.cs.payment.*;
+import com.cs.store.*;
+
 
 public class Main {
 
@@ -12,31 +11,39 @@ public class Main {
 	// write your code here
 
         Visa mohammed = new Visa("mohammed mohammed");
-
+        mohammed.deposit(120);
         BankCheck check = new BankCheck();
-
         Master jarvis = new Master("Jarvis");
 
-        mohammed.deposit(1200);
-        jarvis.deposit(600);
+        //items
+        Item item1 = new Item("Sugar", 7);
+        Item item2 = new Item("Flour", 9.5);
+        Item item3 = new Item("Samsung TV 65inches 4k", 870);
 
-
-        charge(jarvis, 230);
-        charge(mohammed, 250);
-        charge(check, 460);
+        // cart
+        Cart cart = new Cart();
+        Cashier cashier = new Cashier();
+        // charge
+        cart.addItem(item1);
+        cart.addItem(item2);
+       // cart.addItem(item3);
+        cart.getDetails();
 
         mohammed.getStatus();
-        jarvis.getStatus();
-        check.getCheckStatus();
+        cashier.Charge(mohammed, cart);
+        mohammed.getStatus();
+        cashier.getFullInfos();
 
+//        check.getCheckStatus();
+//        cashier.Charge(check, cart);
+//        check.getCheckStatus();
 
     }
 
-    public static void charge(IPay c, double amount){
-        c.spend(amount);
-    }
 
-    public static void getInfo(Card c){
+
+    public static void getSlogan(Card c)
+    {
         c.slogan();
     }
 }

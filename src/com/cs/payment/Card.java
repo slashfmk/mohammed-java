@@ -4,6 +4,7 @@ import com.cs.interfaces.IPay;
 
 import java.util.*;
 
+
 public abstract class Card implements IPay {
 
     // attributes
@@ -15,6 +16,8 @@ public abstract class Card implements IPay {
     protected String type;
     protected Random random;
     protected double balance;
+
+    public static int numOfCards = 0;
 
     protected Scanner scanner;
 
@@ -29,14 +32,57 @@ public abstract class Card implements IPay {
         this.number = this.random.nextInt(999999999) + 123344445;
         this.type = type;
         this.scanner = new Scanner(System.in);
+        numOfCards++;
+    }
+
+    public void setBalance(double newBalance) {
+        this.balance = newBalance;
+    }
+
+    public double getBalance() {
+        return this.balance;
+    }
+
+    public int getNumber() {
+        return number;
+    }
+
+    public void setNumber(int number) {
+        this.number = number;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getExp_year() {
+        return exp_year;
+    }
+
+    public void setExp_year(int exp_year) {
+        this.exp_year = exp_year;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public void deposit(double amount) {
         this.balance += amount;
     }
 
-    public void spend(double amount) {
+    public boolean spend(double amount) {
         int userPwd;
+        boolean success = false;
+
         System.out.println("Please enter your password ");
         userPwd = scanner.nextInt();
 
@@ -44,12 +90,15 @@ public abstract class Card implements IPay {
 
             if (this.balance >= amount) {
                 this.balance -= amount;
+                success = true;
             } else {
-                System.out.println("You don't have enough money");
+                System.out.println("You don't have enough money you need $" + Math.abs(this.balance - amount) + " more!");
             }
         } else {
             System.out.println("Wrong password entered!!!!");
         }
+
+        return success;
 
     }
 
@@ -59,7 +108,6 @@ public abstract class Card implements IPay {
 
         System.out.println("Please enter your current password ");
         userCurrentPwd = this.scanner.nextInt();
-
 
         if (this.checkPassword(userCurrentPwd)) {
             System.out.println("Please enter your new password ");
@@ -86,6 +134,5 @@ public abstract class Card implements IPay {
     public void getStatus() {
         System.out.println("Name: " + this.name + " | Balance: " + this.balance + " | #: " + this.number + " | " + this.type);
     }
-
 
 }
