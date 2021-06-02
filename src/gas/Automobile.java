@@ -1,6 +1,8 @@
 package gas;
 
-public abstract class Automobile {
+import java.text.DecimalFormat;
+
+public abstract class Automobile implements IFuelTank {
 
     protected String color;
     protected String make;
@@ -18,29 +20,29 @@ public abstract class Automobile {
         this.ratio = ratio;
     }
 
-    public int getGasLevel() {
-        return gasLevel;
-    }
-
-    public void setGasLevel(int gasLevel) {
-        this.gasLevel = gasLevel;
-    }
 
     public boolean isTankEmpty() {
         return this.gasLevel <= 0;
     }
 
-    protected boolean iSEnoughGaz(int miles){
-        int result  = this.ratio * miles;
-        return result < this.gasLevel;
+
+    public double getGallonsFromMiles (int miles){
+
+        DecimalFormat df = new DecimalFormat("#.##");
+
+        double r = (double) 1 / this.ratio;
+        double result = (double) (miles * r * this.gazLimit / 100);
+
+        return Double.parseDouble(df.format(result)) ;
     }
 
     public void run(int miles) {
         if(this.isTankEmpty()){
             System.out.println("no gaz in th tank, no way to drive!");
         } else {
-            if(this.iSEnoughGaz(miles)){
-                System.out.println("Trip has started");
+                if(this.getGallonsFromMiles(miles) < this.gasLevel){
+                    System.out.println("Trip has started");
+                    this.gasLevel -= this.getGallonsFromMiles(miles);
             } else {
                 System.out.println("Your tank is not empty, but doesn't have enough gaz");
             }
