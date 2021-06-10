@@ -1,27 +1,26 @@
 package gen;
-
 import banking.store.Item;
 
 public class NumberItem <I extends Number, S extends Item> {
 
-    private I number;
-    private S name;
+    private I i;
+    private S s;
 
     public NumberItem(I n, S str){
-            this.number = n;
-            this.name = str;
+            this.i = n;
+            this.s = str;
     }
 
     public I getI(){
-        return this.number;
+        return this.i;
     }
 
     public S getS(){
-        return this.name;
+        return this.s;
     }
 
-    public void setNumber(I n){
-        this.number = n;
+    public void setI(I n){
+        this.i = n;
     }
 
 //    public <I , S> getBoth(){

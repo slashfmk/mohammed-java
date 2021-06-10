@@ -28,9 +28,9 @@ public class Main {
        // cart.addItem(item3);
         cart.getDetails();
 
-        mohammed.getStatus();
+        mohammed.toString();
         cashier.Charge(mohammed, cart);
-        mohammed.getStatus();
+        mohammed.toString();
         cashier.getFullInfos();
 
 //        check.getCheckStatus();

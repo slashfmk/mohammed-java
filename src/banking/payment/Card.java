@@ -131,8 +131,8 @@ public abstract class Card implements IPay {
 
     public abstract void slogan();
 
-    public void getStatus() {
-        System.out.println("Name: " + this.name + " | Balance: " + this.balance + " | #: " + this.number + " | " + this.type);
+    public String toString() {
+        return "Name: " + this.name + " | Balance: " + this.balance + " | #: " + this.number + " | " + this.type;
     }
 
 }
