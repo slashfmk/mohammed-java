@@ -25,6 +25,11 @@ public class Pair <T> {
         this.t.add(x);
     }
 
+//    public void show(){
+//
+//       foreach(t -> System.out.println(t.toString());
+//    }
+
     public void show(){
         for(T z: this.t){
             System.out.println(z.toString());
